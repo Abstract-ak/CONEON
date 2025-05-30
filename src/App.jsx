@@ -51,11 +51,52 @@ const App = () => {
   return (
     <div className="container">
       <h2>Semi-Circle Ball Movement</h2>
+
       <svg
-        width={CENTER_X * 2}
-        height={CENTER_Y + 20}
+        width={CENTER_X * 2 + 60} // wider SVG
+        height={CENTER_Y + 80} // taller SVG
         style={{ display: "block", margin: "0 auto" }}
       >
+        {/* Draw vertical line at 0th index */}
+        {(() => {
+          const { x, y } = getPointCoords(0);
+          return (
+            <>
+              {/* Wall to the left of the vertical line */}
+              <rect
+                x={x - 38}
+                y={y - 100}
+                width={20}
+                height={200}
+                fill="#bdbdbd"
+                stroke="#888"
+                strokeWidth="2"
+                rx={6}
+                opacity={0.7}
+              />
+              {/* Vertical line closer to 0th index */}
+              <line
+                x1={x - 18}
+                y1={y - 100}
+                x2={x - 18}
+                y2={y + 100}
+                stroke="#1976d2"
+                strokeWidth="4"
+                strokeDasharray="10,6"
+              />
+              {/* Horizontal line from 0th index */}
+              <line
+                x1={x - 18}
+                y1={y}
+                x2={x + 18}
+                y2={y}
+                stroke="#1976d2"
+                strokeWidth="4"
+                strokeDasharray="10,6"
+              />
+            </>
+          );
+        })()}
         {/* Draw semicircle */}
         <path
           d={`M${getPointCoords(0).x},${
@@ -114,6 +155,23 @@ const App = () => {
           );
         })()}
       </svg>
+
+      <button
+        style={{
+          // marginBottom: 20,
+          padding: "8px 20px",
+          fontSize: "1rem",
+          cursor: "pointer",
+          borderRadius: 6,
+          border: "1px solid #1976d2",
+          background: "#e3f2fd",
+          color: "#1976d2",
+          fontWeight: 600,
+        }}
+        onClick={() => setPosition(0)}
+      >
+        Reset
+      </button>
     </div>
   );
 };
