@@ -12,7 +12,6 @@ This project is a simple interactive React app built with Vite. It demonstrates 
 
 ![Demo Screenshot](public/demo-screenshot.png)
 
-_If you want to use a grass or ground image, download a free PNG (e.g., from [pngall.com](https://www.pngall.com/grass-png/)) and save it as `public/grass.png`. Then, update the image source in `App.jsx` to use `/grass.png`._
 
 ## How It Works
 
